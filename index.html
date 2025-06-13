@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caio - Assistente Virtual</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Carrega a biblioteca GSAP via CDN antes do seu script principal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  </head>
+  <body>
+    <!-- Tela de carregamento -->
+    <div id="loadingScreen">
+      <img src="novafoto.png" alt="Caio" id="loadingLogo">
+      <div class="loading-content">
+        <p id="loadingText">Carregando... 0%</p>
+        <div class="progress-bar">
+          <div id="progressFill">
+            <span id="progressGlow"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="desktop-container">
+      <!-- Painel lateral de serviços -->
+      <aside class="services-panel">
+        <h2>Serviços Disponíveis</h2>
+        <div class="service-card" onclick="showService('nf')">
+          <h3>Notas Fiscais</h3>
+          <p>Consulta, emissão e histórico completo de NFs</p>
+        </div>
+        <div class="service-card" onclick="showService('pagamentos')">
+          <h3>Status de Pagamentos</h3>
+          <p>Verifique boletos, débitos e liberações</p>
+        </div>
+        <div class="service-card" onclick="showService('fornecedores')">
+          <h3>Fornecedores</h3>
+          <p>Dados cadastrais, contratos e contatos</p>
+        </div>
+        <div class="service-card" onclick="showService('IFSP')">
+          <h3>IFSP</h3>
+          <p>Informações sobre nossos processos</p>
+        </div>
+        <div class="service-card" onclick="showService('ptb')">
+          <h3>DWL</h3>
+          <p>Downloads relatório de pagamento</p>
+        </div>
+      </aside>
+
+      <!-- Área principal do atendimento -->
+      <main class="main-content">
+        <header class="profile-header">
+          <img src="imagem.principal.jpeg" alt="Caio - Assistente virtual" class="profile-image" />
+          <div class="profile-info">
+            <h1>Caio</h1>
+            <p>Assistente Virtual de Pagamentos</p>
+          </div>
+        </header>
+        <section id="chatContainer" class="chat-container">
+          <button id="chatBtn" class="chat-trigger-btn" onclick="startConversation()">Iniciar<br /></button>
+          <div id="chatBox" class="chat-box" style="display: none;">
+            <div class="chat-header">
+              Assistente Virtual
+              <span class="close-btn" onclick="toggleChat(false)" aria-label="Fechar chat">&times;</span>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input">
+              <input type="text" id="userInput" placeholder="Digite sua mensagem..." aria-label="Campo de mensagem" onkeydown="if(event.key === 'Enter') sendMessage()" />
+              <button onclick="sendMessage()" aria-label="Enviar mensagem">Enviar</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Carrega o script principal (após carregar o GSAP) -->
+    <script src="script.js"></script>
+  </body>
+</html>
